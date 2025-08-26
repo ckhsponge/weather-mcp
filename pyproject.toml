@@ -1,0 +1,35 @@
+[project]
+name = "weather-mcp-server"
+version = "0.1.0"
+description = "A Model Context Protocol (MCP) server that provides weather information for different regions worldwide"
+authors = [
+    {name = "hydavinci"}
+]
+readme = "README.md"
+license = {file = "LICENSE"}
+requires-python = ">=3.10"
+keywords = ["mcp", "weather", "api", "fastapi", "ai"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: Internet :: WWW/HTTP :: HTTP Servers",
+    "Topic :: Scientific/Engineering :: Atmospheric Science"
+]
+dependencies = [
+    "requests>=2.31.0",
+    "fastmcp>=0.2.0"
+]
+
+[project.urls]
+Homepage = "https://github.com/hydavinci/weather_mcp"
+Repository = "https://github.com/hydavinci/weather_mcp"
+Issues = "https://github.com/hydavinci/weather_mcp/issues"
+
+[project.scripts]
+weather-mcp-server = "src.server:main"

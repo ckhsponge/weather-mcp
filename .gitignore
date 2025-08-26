@@ -78,7 +78,6 @@ $RECYCLE.BIN/
 
 # UV package manager
 .python-version
-uv.lock
 
 # Testing
 .pytest_cache/

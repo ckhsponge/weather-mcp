@@ -14,5 +14,8 @@ EXPOSE 8080
 
 ENTRYPOINT ["supergateway"]
 
-CMD ["--stdio", "python src/server.py", "--outputTransport", "streamableHttp", "--healthEndpoint", "/ping", "--port", "8080"]
+CMD ["--stdio", "python src/server.py", "--outputTransport", "streamableHttp", "--healthEndpoint", "/ping", "--port", "8080", "--streamableHttpPath", "/invocations"]
 
+# docker build -t supergateway .
+
+# docker run -it --rm -p 8080:8080 supergateway

@@ -1,9 +1,13 @@
-FROM public.ecr.aws/docker/library/node:20-alpine
+#FROM public.ecr.aws/docker/library/node:20-alpine
+FROM ghcr.io/astral-sh/uv:python3.13-bookworm-slim
 
 RUN pwd
 
-# Install Python, pip, and git
-RUN apk add --no-cache python3 py3-pip git
+# Install Node.js 20, git and dependencies
+RUN apt-get update && apt-get install -y curl git && \
+    curl -fsSL https://deb.nodesource.com/setup_20.x | bash - && \
+    apt-get install -y nodejs && \
+    rm -rf /var/lib/apt/lists/*
 
 # Install Python dependencies
 RUN pip install --break-system-packages requests fastmcp

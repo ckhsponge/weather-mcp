@@ -1,5 +1,4 @@
-#FROM public.ecr.aws/docker/library/node:20-alpine
-FROM ghcr.io/astral-sh/uv:python3.13-bookworm-slim
+FROM public.ecr.aws/docker/library/python:3.13-slim
 
 RUN pwd
 

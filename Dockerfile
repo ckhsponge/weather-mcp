@@ -12,21 +12,20 @@ RUN apt-get update && apt-get install -y curl git && \
 # Install Python dependencies
 RUN pip install --break-system-packages requests fastmcp
 
-RUN git clone https://github.com/ckhsponge/supergateway.git /app/supergateway
+RUN git clone --depth 1 --branch v3.4.3 https://github.com/supercorp-ai/supergateway.git /app/supergateway
 RUN cd /app/supergateway && npm install
 RUN cd /app/supergateway && npm run build
 
-COPY . .
+COPY . /app/local
 
-WORKDIR /app/supergateway
+WORKDIR /app/local
 
-EXPOSE 8080
+EXPOSE 8000
 
 ENTRYPOINT ["node", "/app/supergateway/dist/index.js"]
 
-CMD ["--stdio", "python /src/server.py", "--outputTransport", "streamableHttp", "--healthEndpoint", "/ping", "--port", "8000", "--streamableHttpPath", "/mcp"]
+CMD ["--stdio", "python src/server.py", "--outputTransport", "streamableHttp", "--healthEndpoint", "/ping", "--port", "8000", "--streamableHttpPath", "/mcp"]
 
 # docker build -t supergateway .
-
 # docker run -it --rm -p 8080:8080 supergateway
 
